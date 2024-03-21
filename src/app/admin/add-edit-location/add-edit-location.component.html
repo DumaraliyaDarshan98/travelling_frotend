@@ -1,0 +1,95 @@
+<div class="main">
+  <form [formGroup]="locationForn" (ngSubmit)="submit()">
+    <div mat-dialog-title>
+      <button
+        class="close-btn btn btn-secondary float-end"
+        type="button"
+        (click)="close()"
+      >
+        X
+      </button>
+      <h2 class="font-weight-bold text-center">Location Form</h2>
+    </div>
+
+    <div mat-dialog-content class="p-3">
+      <div class="text-center">
+        <mat-form-field appearance="outline">
+          <mat-label>Title</mat-label>
+          <input
+            matInput
+            placeholder="Enter title Name"
+            formControlName="title"
+          />
+        </mat-form-field>
+      </div>
+      <div class="text-center">
+        <mat-form-field appearance="outline">
+          <mat-label>City</mat-label>
+          <mat-select formControlName="city">
+            <mat-option value="mayur">hekko</mat-option>
+            <mat-option value="amit">hekko</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="text-center">
+        <mat-form-field appearance="outline">
+          <mat-label>state</mat-label>
+          <mat-select formControlName="state">
+            <mat-option value="mayur">hekko</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="text-center">
+        <mat-form-field appearance="outline">
+          <mat-label>description</mat-label>
+          <input
+            matInput
+            placeholder="Enter description "
+            formControlName="description"
+          />
+        </mat-form-field>
+      </div>
+      <ng-container *ngIf="put">
+        <div class="text-center" *ngIf="image1; else elseBlock">
+          <img [src]="srcimage" height="250px" width="250px" />
+        </div>
+        <ng-template #elseBlock>
+          <div class="text-center">
+            <img
+              src="assets/images/image_not.jpg"
+              height="250px"
+              width="250px"
+            />
+          </div>
+        </ng-template>
+      </ng-container>
+      <div class="text-center m-1">
+        <input
+          type="file"
+          multiple
+          formControlName="image"
+          class="text-center"
+          (change)="onFileSelected($event)"
+        />
+      </div>
+    </div>
+    <div mat-dialog-actions class="action">
+      <button
+        mat-raised-button
+        type="submit"
+        class="btn btn-primary"
+        [disabled]="!locationForn.valid"
+      >
+        Save
+      </button>
+      <button
+        mat-raised-button
+        type="button"
+        class="btn btn-danger"
+        (click)="close()"
+      >
+        close
+      </button>
+    </div>
+  </form>
+</div>

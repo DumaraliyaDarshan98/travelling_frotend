@@ -1,0 +1,22 @@
+<div class="sidebar">
+  <div class="image" style="margin-top: 40px">
+    <img src="assets/images/test2.png" />
+  </div>
+  <div class="link">
+    <div class="anchor"><a routerLink="/admin/userList">User List</a></div>
+    <div class="anchor">
+      <a routerLink="/admin/locationlisting">Tour Listing</a>
+    </div>
+    <div class="anchor">
+      <a routerLink="/admin/travelinglisting">Traveling Listing</a>
+    </div>
+  </div>
+  <button
+    (click)="logout()"
+    class="btn btn-danger"
+    style="position: fixed; bottom: 30px; width: 15%"
+  >
+    Log Out
+  </button>
+</div>
+<div class="main"><router-outlet></router-outlet></div>

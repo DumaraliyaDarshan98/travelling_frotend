@@ -1,0 +1,69 @@
+<div class="container">
+  <div class="block" *ngFor="let md of demoBook?.data; let i = index">
+    <div class="image-container">
+      <!-- (mouseover)="toggleDisplay(i)" -->
+      <!-- (mouseout)="toggleDisplay(i)" -->
+
+      <!-- <img src="{{ md.image }}" alt="Image" class="image" id="image{{ i }}" /> -->
+      <img
+        src="http://192.168.1.8:3200/uploads/{{ md.image }}"
+        alt="Image"
+        class="image"
+        id="image{{ i }}"
+      />
+      <button class="favorite-button" (click)="toggleFavorite(i)">
+        <span class="heart-icon" [class.favorited]="isFavorite[i]"
+          >&#10084;</span
+        >
+      </button>
+
+      <!-- <button
+        id="prev-button"
+        class="nav-button"
+        (click)="previousImage()"
+        style="font-weight: bold; border-radius: 50%"
+      >
+        <
+      </button>
+      <button
+        id="next-button"
+        class="nav-button"
+        (click)="nextImage()"
+        style="font-weight: bold; border-radius: 50%"
+      >
+        >
+      </button> -->
+    </div>
+
+    <div><b>Name:</b> {{ md.title }}</div>
+    <div>
+      <b>description:</b>
+      <p *ngIf="!displayFullParagraphs[i]">
+        {{ md.description | slice : 0 : 50 }}
+        <label (click)="toggleDisplay(i)" style="cursor: pointer"
+          ><b style="color: rgb(119, 119, 247)">Read Less...</b></label
+        >
+      </p>
+      <div *ngIf="displayFullParagraphs[i]">
+        {{ md.description | slice : 0 : 50 }}
+        <label (click)="toggleDisplay(i)" style="cursor: pointer"
+          ><b style="color: rgb(139, 139, 250)">Read more...</b></label
+        >
+      </div>
+    </div>
+    <div>
+      State:-<b>{{ md.state }}</b>
+    </div>
+    <div>
+      City:-<b>{{ md.city }}</b>
+    </div>
+    <div>
+      <button
+        class="btn btn-primary"
+        [routerLink]="['/user/busdetails', md.id]"
+      >
+        bookNow
+      </button>
+    </div>
+  </div>
+</div>

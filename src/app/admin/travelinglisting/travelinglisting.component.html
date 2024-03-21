@@ -1,0 +1,56 @@
+<h1 style="margin-top: 40px; position: relative">
+  <b><u>T r a v e l i n g L i s t </u></b>
+</h1>
+<div class="loader" *ngIf="!travelinglist"></div>
+<div class="userlist" *ngIf="travelinglist">
+  <div class="button">
+    <button
+      class="btn btn-primary float-end"
+      (click)="editaddopen()"
+      style="background-color: #000099; color: white"
+    >
+      Add Travelars
+    </button>
+  </div>
+  <div>
+    <table>
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Description</th>
+          <th>Total Day</th>
+          <th>Price Per Day</th>
+          <th>image</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of travelinglist.data">
+          <td>{{ item.title }}</td>
+          <td>{{ item.description | slice : 0 : 20 }}</td>
+          <td>{{ item.totalDays }}</td>
+
+          <td>{{ item.pricePerDay }}</td>
+          <td>{{ item.image }}</td>
+          <td class="d-flex justify-content-evenly">
+            <img
+              src="assets/images/delete.svg"
+              height="20px"
+              width="20px"
+              (click)="deletetraveling(item.id)"
+              style="cursor: pointer"
+            />
+
+            <img
+              src="assets/images/edit.svg"
+              height="20px"
+              width="20px"
+              (click)="edit(item.id)"
+              style="cursor: pointer"
+            />
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

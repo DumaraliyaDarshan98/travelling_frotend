@@ -1,0 +1,48 @@
+<ng-container *ngIf="data">
+  <div class="busdetails">
+    <div>
+      <img
+        src="http://192.168.1.8:3200/uploads/{{ data.data.image }}"
+        style="border-radius: 10px; height: 500px; width: 700px"
+      />
+    </div>
+    <div class="busbody">
+      <div>
+        <h1>
+          <b style="color: gray">{{ data.data.title }}</b>
+        </h1>
+      </div>
+      <div>
+        <p>{{ data.data.description }}</p>
+      </div>
+      <div>
+        State
+        <b
+          style="
+            border: 1px solid gray;
+            background-color: gray;
+            padding: 15px;
+            border-radius: 15px;
+            color: white;
+          "
+        >
+          {{ data.data.state }}</b
+        >
+      </div>
+      <div>
+        City:-
+        <b
+          style="
+            border: 1px solid gray;
+            background-color: gray;
+            padding: 15px;
+            border-radius: 15px;
+            color: white;
+          "
+          >₹ {{ data.data.city }}</b
+        >
+      </div>
+      <div><button class="btn btn-primary" (click)="back()">Back</button></div>
+    </div>
+  </div>
+</ng-container>

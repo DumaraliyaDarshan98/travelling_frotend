@@ -1,0 +1,77 @@
+<h1 style="margin-top: 40px; position: relative">
+  <b><u>T o u r L i s t i n g </u></b>
+</h1>
+<div class="loader" *ngIf="!locationlist"></div>
+<div class="userlist" *ngIf="locationlist">
+  <div class="d-flex justify-content-end gap-3">
+    <mat-form-field>
+      <mat-label>State</mat-label>
+      <mat-select (selectionChange)="state(state1)" #state1>
+        <mat-option value="mayur">mayur</mat-option>
+        <mat-option value="amit">Amit</mat-option>
+        <mat-option value="hello">hello</mat-option>
+        <mat-option value="dhaval">Dhaval</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>City</mat-label>
+      <mat-select (selectionChange)="city(city1)" #city1>
+        <mat-option value="mayur">hekko</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <div>
+      <button class="btn btn-secondary" (click)="clear(city1, state1)">
+        Clear
+      </button>
+    </div>
+  </div>
+  <div class="button">
+    <button
+      class="btn float-end"
+      (click)="editaddopen()"
+      style="background-color: #000099; color: white"
+    >
+      Add Location
+    </button>
+  </div>
+  <div>
+    <table>
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>City</th>
+          <th>State</th>
+          <th>Description</th>
+          <th>Image</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of locationlist.data">
+          <td>{{ item.title }}</td>
+          <td>{{ item.city }}</td>
+          <td>{{ item.state }}</td>
+          <td>{{ item.description | slice : 0 : 25 }}</td>
+          <td>{{ item.image }}</td>
+          <td class="d-flex justify-content-between">
+            <img
+              src="assets/images/delete.svg"
+              height="20px"
+              width="20px"
+              (click)="deletelocation(item.id)"
+              style="cursor: pointer"
+            />
+
+            <img
+              src="assets/images/edit.svg"
+              height="20px"
+              width="20px"
+              (click)="edit(item.id)"
+              style="cursor: pointer"
+            />
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

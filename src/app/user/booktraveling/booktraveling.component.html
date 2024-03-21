@@ -1,0 +1,95 @@
+<div class="d-flex justify-content-end gap-3 m-5">
+  <mat-form-field>
+    <mat-label>State</mat-label>
+    <mat-select (selectionChange)="state(state1)" #state1>
+      <mat-option value="mayur">mayur</mat-option>
+      <mat-option value="amit">Amit</mat-option>
+      <mat-option value="hello">hello</mat-option>
+      <mat-option value="dhaval">Dhaval</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>City</mat-label>
+    <mat-select (selectionChange)="city(city1)" #city1 (ng-model)="(demo)">
+      <mat-option value="mayur">hekko</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <div>
+    <button class="btn btn-secondary" (click)="clear(city1, state1)">
+      Clear
+    </button>
+  </div>
+</div>
+
+<div class="container">
+  <div class="block" *ngFor="let md of travelingdata?.data; let i = index">
+    <div class="image-container">
+      <!-- (mouseover)="toggleDisplay(i)" -->
+      <!-- (mouseout)="toggleDisplay(i)" -->
+
+      <!-- <img src="{{ md.image }}" alt="Image" class="image" id="image{{ i }}" /> -->
+      <img
+        src="http://192.168.1.8:3200/uploads/{{ md.image }}"
+        alt="Image"
+        class="image"
+        id="image{{ i }}"
+      />
+      <button class="favorite-button" (click)="toggleFavorite(i)">
+        <span class="heart-icon" [class.favorited]="isFavorite[i]"
+          >&#10084;</span
+        >
+      </button>
+    </div>
+
+    <div><b>Name:</b> {{ md.title }}</div>
+    <div>
+      <b>Description:</b>
+      <p *ngIf="!displayFullParagraphs[i]">
+        {{ md.description | slice : 0 : 50 }}
+        <label (click)="toggleDisplay(i)" style="cursor: pointer"
+          ><b style="color: rgb(119, 119, 247)">Read Less...</b></label
+        >
+      </p>
+      <div *ngIf="displayFullParagraphs[i]">
+        {{ md.description | slice : 0 : 50 }}
+        <label (click)="toggleDisplay(i)" style="cursor: pointer"
+          ><b style="color: rgb(139, 139, 250)">Read more...</b></label
+        >
+      </div>
+    </div>
+    <div>
+      Total Days:-
+      <b
+        class=""
+        style="
+          border: 1px solid black;
+          background-color: rgb(228, 223, 219);
+          padding: 5px;
+          border-radius: 10px;
+        "
+        >{{ md.totalDays }}</b
+      >
+    </div>
+    <div>
+      Price Per Day:-
+      <b
+        class=""
+        style="
+          border: 1px solid black;
+          background-color: rgb(228, 223, 219);
+          padding: 5px;
+          border-radius: 10px;
+        "
+        >{{ md.pricePerDay }}</b
+      >
+    </div>
+    <div>
+      <button
+        class="btn btn-primary"
+        [routerLink]="['/user/travelingdetails', md.id]"
+      >
+        bookNow
+      </button>
+    </div>
+  </div>
+</div>

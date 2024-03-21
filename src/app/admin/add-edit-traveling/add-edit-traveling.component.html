@@ -1,0 +1,103 @@
+<div class="main">
+  <form [formGroup]="travelform" (ngSubmit)="submit()">
+    <div mat-dialog-title>
+      <button
+        class="close-btn btn btn-secondary float-end"
+        type="button"
+        (click)="close()"
+      >
+        X
+      </button>
+      <h2 class="font-weight-bold text-center">Traveling Form</h2>
+    </div>
+
+    <div mat-dialog-content class="p-3">
+      <div class="text-center">
+        <mat-form-field appearance="outline">
+          <mat-label>Title</mat-label>
+          <input
+            matInput
+            placeholder="Enter title Name"
+            formControlName="title"
+          />
+        </mat-form-field>
+      </div>
+      <div class="text-center">
+        <mat-form-field appearance="outline">
+          <mat-label>totalDay</mat-label>
+          <input
+            matInput
+            type="number"
+            placeholder="Enter totalDay "
+            formControlName="totalDays"
+          />
+        </mat-form-field>
+      </div>
+      <div class="text-center">
+        <mat-form-field appearance="outline">
+          <mat-label>pricePerDay</mat-label>
+          <input
+            matInput
+            type="number"
+            placeholder="Enter pricePerDay "
+            formControlName="pricePerDay"
+          />
+        </mat-form-field>
+      </div>
+
+      <div class="text-center">
+        <mat-form-field appearance="outline">
+          <mat-label>description</mat-label>
+          <input
+            matInput
+            type="textarea"
+            placeholder="Enter description "
+            formControlName="description"
+          />
+        </mat-form-field>
+      </div>
+      <ng-container *ngIf="put">
+        <div class="text-center m-2" *ngIf="image; else elseBlock">
+          <img [src]="srcimage" height="200px" width="200px" />
+        </div>
+        <ng-template #elseBlock>
+          <div class="text-center">
+            <img
+              src="assets/images/image_not.jpg"
+              height="200px"
+              width="200px"
+            />
+          </div>
+        </ng-template>
+      </ng-container>
+      <div class="text-center">
+        <div class="text-center">
+          <input
+            type="file"
+            formControlName="image"
+            class="text-center"
+            (change)="onFileSelected($event)"
+          />
+        </div>
+      </div>
+      <div mat-dialog-actions class="action">
+        <button
+          mat-raised-button
+          type="submit"
+          class="btn btn-primary"
+          [disabled]="!travelform.valid"
+        >
+          Save
+        </button>
+        <button
+          mat-raised-button
+          type="button"
+          class="btn btn-danger"
+          (click)="close()"
+        >
+          close
+        </button>
+      </div>
+    </div>
+  </form>
+</div>

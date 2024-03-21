@@ -1,0 +1,49 @@
+table {
+  font-family: sans-serif;
+  width: 100%;
+  height: fit-content;
+
+  th,
+  td {
+    padding: 10px;
+  }
+  td {
+    background-color: #eee;
+  }
+  th {
+    background-color: #009;
+    color: #fff;
+    margin: 3px;
+  }
+}
+
+.userlist {
+  // margin-top: 10%;
+}
+
+.loader {
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid #d9afd9;
+  border-bottom: 16px solid#97d9e1;
+  border-left: transparent;
+  border-right: transparent;
+  width: 120px;
+  height: 120px;
+  position: fixed;
+  top: 40%;
+  bottom: 60%;
+  left: 60%;
+  right: 40%;
+
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

@@ -1,0 +1,49 @@
+<div class="form1">
+  <form
+    [formGroup]="loginform"
+    (ngSubmit)="submitform()"
+    class="form d-flex justify-content-around flex-column w-25"
+  >
+    <h1 class="text-center">Login</h1>
+    <div class="form-control">
+      <!-- <label for="userName">Username</label> -->
+      <input
+        type="text"
+        placeholder="Username"
+        formControlName="userName"
+        class="input-group"
+      />
+      <!-- <span *ngIf="userform.get('name')?.hasError('valid')">Name is required</span> -->
+      <div *ngIf="loginform.controls['userName'].touched">
+        <div *ngIf="loginform.controls['userName'].invalid" style="color: red">
+          * Enter Valid Username
+        </div>
+      </div>
+    </div>
+    <div class="form-control">
+      <!-- <label for="password">Password</label> -->
+      <input
+        type="password"
+        placeholder="Password"
+        formControlName="password"
+        class="input-group"
+      />
+      <!-- <span *ngIf="userform.get('name')?.hasError('valid')">Name is required</span> -->
+      <div *ngIf="loginform.controls['password'].touched">
+        <div *ngIf="loginform.controls['password'].invalid" style="color: red">
+          * Enter Correct Password
+        </div>
+      </div>
+    </div>
+
+    <div class="form-control d-flex justify-content-around">
+      <button
+        type="submit"
+        [disabled]="!loginform.valid"
+        class="btn btn-primary"
+      >
+        Sign In
+      </button>
+    </div>
+  </form>
+</div>

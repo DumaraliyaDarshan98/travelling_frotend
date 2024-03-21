@@ -1,0 +1,115 @@
+<div class="form1">
+  <form
+    [formGroup]="userform"
+    (ngSubmit)="submitform()"
+    class="form d-flex justify-content-around flex-column w-25"
+  >
+    <h2 class="text-center">Registration Form</h2>
+    <div class="form-control">
+      <label for="name">First Name :-</label>
+      <input
+        type="text"
+        placeholder="Enter Frist Name"
+        formControlName="firstName"
+        class="input-group"
+      />
+      <!-- <span *ngIf="userform.get('name')?.hasError('valid')">Name is required</span> -->
+      <div *ngIf="userform.controls['firstName'].touched">
+        <div *ngIf="userform.controls['firstName'].invalid" style="color: red">
+          * Name Is Required
+        </div>
+      </div>
+    </div>
+    <div class="form-control">
+      <label for="name">Last Name :-</label>
+      <input
+        type="text"
+        placeholder="Enter Last Name"
+        formControlName="lastName"
+        class="input-group"
+      />
+      <!-- <span *ngIf="userform.get('name')?.hasError('valid')">Name is required</span> -->
+      <div *ngIf="userform.controls['lastName'].touched">
+        <div *ngIf="userform.controls['lastName'].invalid" style="color: red">
+          * Name Is Required
+        </div>
+      </div>
+    </div>
+    <div class="form-control">
+      <label for="email">Email:-</label>
+      <input
+        type="text"
+        id="email"
+        placeholder="Enter Email"
+        formControlName="email"
+        class="input-group"
+      />
+      <div *ngIf="userform.controls['email'].touched">
+        <div *ngIf="userform.controls['email'].invalid" style="color: red">
+          * Please Enter Valid Email
+        </div>
+      </div>
+    </div>
+    <div class="form-control">
+      <label for="password">Password:-</label>
+      <input
+        type="password"
+        placeholder="Enter Password"
+        formControlName="password"
+        class="input-group"
+      />
+      <div *ngIf="userform.controls['password'].touched">
+        <div *ngIf="userform.controls['password'].invalid" style="color: red">
+          * Password Must Be 8 Characters
+        </div>
+      </div>
+    </div>
+    <div class="form-control">
+      <label for="cpassword">Confirm Password:-</label>
+      <input
+        type="password"
+        placeholder="Retype Password"
+        formControlName="confirmPassword"
+        class="input-group"
+      />
+      <div *ngIf="userform.controls['confirmPassword'].touched">
+        <div
+          *ngIf="userform.controls['confirmPassword'].invalid"
+          style="color: red"
+        >
+          * Password Must Be 8 Characters
+        </div>
+      </div>
+    </div>
+    <div class="form-control">
+      <label for="mobile">Mobile:-</label>
+      <input
+        type="text"
+        placeholder="Enter Mobile"
+        formControlName="mobile"
+        class="input-group"
+      />
+      <div *ngIf="userform.controls['mobile'].touched">
+        <div *ngIf="userform.controls['mobile'].invalid" style="color: red">
+          * Enter Valid Mobile Number
+        </div>
+      </div>
+    </div>
+
+    <div class="form-control d-flex justify-content-around">
+      <button
+        type="submit"
+        [disabled]="!userform.valid"
+        class="btn btn-primary"
+      >
+        Submit
+      </button>
+      <button type="button" (click)="clear()" class="btn btn-danger">
+        Clear
+      </button>
+      <!-- <button type="button" (click)="fetch()" class="btn btn-secondary">
+        Set Data
+      </button> -->
+    </div>
+  </form>
+</div>
